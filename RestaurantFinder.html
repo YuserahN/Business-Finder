@@ -36,11 +36,11 @@
                 service.nearbySearch(request, callback);
 
                 google.maps.event.addListener(map, 'rightclick', function(event) {
-                    map.setCenter(event.latLang)
+                    map.setCenter(event.latLng)
                     clearResults(markers)
 
                     var request = {
-                        location: event.latLang, 
+                        location: event.latLng, 
                         radius: 8047, 
                         types: ['restaurant']
                     };
