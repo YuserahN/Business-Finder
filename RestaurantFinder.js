@@ -10,6 +10,23 @@ var service;
 var markers = [];
 
 function initialize() {
+    var input = document.getElementById('searchBox');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var place = autocomplete.getPlace();
+        var latitude = place.geometry.location.lat();
+        var longitude = place.geometry.location.lng();
+        var center = {lat: latitude, lng: longitude}
+        map.setCenter(center)
+        clearResults(markers)
+        var request = {
+            location: center, 
+            radius: 8047, 
+            types: ['restaurant']
+        };
+        service.nearbySearch(request, callback);
+    });
+    
     var center = {lat: 41.8333925, lng: -88.0121486};
     map = new google.maps.Map(document.getElementById('map'), {
         center: center,
