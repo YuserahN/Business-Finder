@@ -8,6 +8,7 @@ var infoWindow;
 var request;
 var service;
 var markers = [];
+var address;
 
 function initialize() {
     var input = document.getElementById('searchBox');
@@ -85,7 +86,6 @@ function callback(results, status) {
 }
 
 function createMarker(place) {
-    var address = "Press again"
 
     //var latlng = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
 
@@ -110,18 +110,25 @@ function createMarker(place) {
     //    }
     //});
 
-    //Show Store Name and Address When Pressed (Somehow marker needs to be pressed 2x to show address)
-    google.maps.event.addListener(marker, 'click', function () {   
-        service.getDetails(request, function (place, status) {
-            address = place.formatted_address;
-        });    
-
-        infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-            address + '</div>');
-        infoWindow.open(map, this);
+    //Show Store Name and Address When Pressed
+    google.maps.event.addListener(marker, 'click', function () {
+        getAddress();
+        setTimeout(function () { getAddress(); }, 300);
+        setTimeout(function () { showDetails(marker); }, 301);
+            
     });
 
+    function getAddress() {
+        service.getDetails(request, function (place, status) {
+            address = place.formatted_address;
+        });  
+    }
 
+    function showDetails(marker) {
+        infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+            address + '</div>');
+        infoWindow.open(map, marker);
+    }
 
     return marker;
 }
