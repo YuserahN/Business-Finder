@@ -17,19 +17,33 @@
             padding: 0px
         }
 
+		#input {
+			height: 5%;
+		}
+		
         #searchBox {
-            height: 10%;
-            width: 50%;
-            text-align: center;
-            margin-left: 25%;
-            font-size: 100%;
+            width: 50%;  		
         }
+		
+		#searchBox, #searchBox2, #startSearch {
+			height: 80%;
+			text-align: center;
+            font-size: 20px;
+		}
     </style>
 </head>
 <body>
-    <input id="searchBox" type="text" size="50" placeholder="Enter a location" autocomplete="on" />
-	<input id="searchBox2" type="text" size="25" placeholder="Enter search radius by mile" />
-	<button onclick="startSearch()">Search</button>
+	<div id="input" align="center">
+		<input id="searchBox" type="text" size="50" placeholder="Enter a location" autocomplete="on" />
+		<select id="searchBox2" placeholder="Enter search radius by mile">
+		  <option value="5">5 miles</option>
+		  <option value="10">10 miles</option>
+		  <option value="15">15 miles</option>
+		  <option value="20">20 miles</option>
+		</select>
+		<button id="startSearch" onclick="startSearch()">Search</button>
+	</div>
     <div id="map"></div>
+	
 </body>
 </html>
