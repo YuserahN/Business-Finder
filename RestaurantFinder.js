@@ -14,6 +14,7 @@ var latitude;
 var longitude;
 var center;
 var miles;
+var zoomvar;
 
 function initialize() {
     var input = document.getElementById('searchBox');
@@ -52,15 +53,24 @@ function initialize() {
 
 //Start search after address and radius filled
 function startSearch() {
-	radiusInput = document.getElementById('searchBox2').value;
-	
+    radiusInput = document.getElementById('searchBox2').value;
+
+    //Change zoom level based on radius
+    if (radiusInput == 5) {
+        zoomvar = 12;
+    } else if (radiusInput == 10 || radiusInput == 15) {
+        zoomvar = 11;
+    } else {
+        zoomvar = 10;
+    }
+
 	//Convert miles to meters
 	radiusInput = radiusInput / 0.00062137;
 
 	//center = {lat: 41.8333925, lng: -88.0121486};
     map = new google.maps.Map(document.getElementById('map'), {
         center: center,
-        zoom: 13
+        zoom: zoomvar
     });
 	
 	showCurrentLocation();
