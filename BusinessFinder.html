@@ -1,0 +1,73 @@
+﻿<!--Created By: Yuserah Din, Chandni Patel, John Roxas
+	Date: 04/22/2019
+	Business Finder 
+	Software Capstone Class
+
+	Yuserah Din: Implemented the API. Added a searchbox and functionality to 
+    search for businesses based on input location.
+    
+    Chandni Patel: Expanded the app to include the capability to search for
+    various businesses. (Originally, it was only a restaurant finder.)
+
+    John Roxas: Added searchbox and functionality for radius-based search. 
+    Added a homepage and store addresses for each location. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>Business Finder</title>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA6uFaJSBDl_wOP6JNFi7ZXPGuENQTfvTk"></script>
+    <script type="text/javascript" src="BusinessFinder.js"></script>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body id="mainpage">
+	<div id="navigation">
+		<nav>
+		<ul>
+		<li><b>Businesses</b></li>
+		<li><a href="BusinessFinder.html?searchword=atm" >ATM</a></li>
+		<li><a href="BusinessFinder.html?searchword=bank" >Bank</a></li>
+		<li><a href="BusinessFinder.html?searchword=church" >Church</a></li>
+		<li><a href="BusinessFinder.html?searchword=doctor" >Doctor</a></li>
+		<li><a href="BusinessFinder.html?searchword=gas_station" >Gas Station</a></li>
+		<li><a href="BusinessFinder.html?searchword=gym" >Gym</a></li>
+		<li><a href="BusinessFinder.html?searchword=library" >Library</a></li>
+		<li><a href="BusinessFinder.html?searchword=police" >Police</a></li>
+		<li><a href="BusinessFinder.html?searchword=restaurant" >Restaurant</a></li>
+		<li><a href="BusinessFinder.html?searchword=school" >School</a></li>
+		<li><a href="BusinessFinder.html?searchword=train_station" >Train Station</a></li>
+		<li><a href="BusinessFinder.html?searchword=zoo" >Zoo</a></li>	
+		</ul>
+		</nav>
+	</div>
+	<div id="input" align="center">
+		<table id="tbl">
+		<tr>		
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>	
+		<td><b><p id="searchword" ></p></b><td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>		
+		<td>
+			<input id="searchBox" type="text" size="50" placeholder="Enter a location" autocomplete="on" />
+		</td>
+		<td>
+			<select id="searchBox2" placeholder="Enter search radius by mile">
+			  <option value="5">5 miles</option>
+			  <option value="10">10 miles</option>
+			  <option value="15">15 miles</option>
+			  <option value="20">20 miles</option>
+			</select>
+		</td>
+		<td>
+			<button id="startSearch" class="button2" onclick="startSearch()">Search</button>
+		</td>		
+		</tr>
+		</table>
+	</div>
+    <div id="map"></div>
+	
+</body>
+</html>
